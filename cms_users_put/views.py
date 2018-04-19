@@ -26,7 +26,8 @@ def barra(request):
         respuesta = "Not logged in. <b><a href='login'>Login</a></b><br>"
     respuesta += "<br>Páginas almacenadas:<br>"
     for pagina in content:
-        respuesta += "<ul><li>" + pagina.name + " / " + pagina.page + "</ul></li>"
+        respuesta += "<ul><li>" + pagina.name + " / " + pagina.page
+        respuesta += "</ul></li>"
     return HttpResponse(respuesta)
 
 
@@ -43,7 +44,8 @@ def pag(request, resource):
                 return HttpResponse(respuesta)
             else:
                 volver = '<a href="http://localhost:8000/">Inicio</a>'
-                respuesta = "La página no existe. Es necesario iniciar sesión para crear una nueva página. "
+                respuesta = "La página no existe. Es necesario"
+                respuesta += "iniciar sesión para crear una nueva página. "
                 return HttpResponse(respuesta + volver)
 
     elif request.method == "POST":
@@ -61,7 +63,8 @@ def pag(request, resource):
             respuesta = "Se ha guardado la pagina " + pag.name + ". " + volver
         else:
             volver = '<a href="http://localhost:8000/">Inicio</a>'
-            respuesta = "Para crear una pagina se necesita hacer login " + volver
+            respuesta = "Para crear una pagina se necesita hacer login "
+            respuesta += volver
     else:
         return HttpResponse("Metodo no permitido")
 
