@@ -16,6 +16,7 @@ FORMULARIO = """
     <input type='submit' value='Enviar'></form>
 """
 
+
 def barra(request):
     content = Pages.objects.all()
     if request.user.is_authenticated():
@@ -41,9 +42,9 @@ def pag(request, resource):
                 respuesta += FORMULARIO
                 return HttpResponse(respuesta)
             else:
-               volver = '<a href="http://localhost:8000/">Inicio</a>'
-               respuesta = "La página no existe. Es necesario iniciar sesión para crear una nueva página. "
-               return HttpResponse(respuesta + volver)
+                volver = '<a href="http://localhost:8000/">Inicio</a>'
+                respuesta = "La página no existe. Es necesario iniciar sesión para crear una nueva página. "
+                return HttpResponse(respuesta + volver)
 
     elif request.method == "POST":
         name = request.POST['nombre']
@@ -66,8 +67,8 @@ def pag(request, resource):
 
     return HttpResponse(respuesta)
 
+
 def error(request):
     volver = '<a href="http://localhost:8000/">Inicio</a>'
-    respuesta = "Ha ocurrido un error: la pagina no esta disponible. " 
+    respuesta = "Ha ocurrido un error: la pagina no esta disponible. "
     HttpResponse(respuesta + volver)
-
